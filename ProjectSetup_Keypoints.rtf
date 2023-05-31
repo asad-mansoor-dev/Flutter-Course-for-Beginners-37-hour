@@ -1,0 +1,203 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+
+\fs36 1- Create new Flutter Project\
+
+\fs24 \
+To create new flutter project we need a unique reverse domain identifier and App name.\
+Here is the format. \'93Flutter create \'97org xxx.domain AppName\'94\
+\
+
+\f1\b Example:
+\f0\b0  Create an App named mynotes and reverse domain as se.pixolity using following command on terminal\
+
+\f1\b \'93flutter create --org se.pixolity mynotes\'94
+\f0\b0 \
+\
+
+\fs36 2- Adding Dependencies
+\fs24 \
+\
+Open Terminal in Visual Studio Code and hit following commands in this format \'93flutter pub add libraryName\'94\
+\
+To Add Firebase:\
+
+\f1\b \'93flutter pub add firebase_core\'94
+\f0\b0 \
+\
+To Add Firebase Authentication.\
+
+\f1\b \'93flutter pub add firebase_auth\'94\
+\
+
+\f0\b0 To Add Firebase Cloud Firestore.\
+
+\f1\b \'93flutter pub add cloud_firestore\'94\
+\
+
+\f0\b0 To Add Firebase Analytics.\
+
+\f1\b \'93flutter pub add firebase_analytics\'94\
+\
+
+\f0\b0\fs36 3- iOS App Setup\
+
+\fs24 \
+
+\f1\b iOS App setup 
+\f0\b0 involves App identifier, Certificates and Profiles.\
+
+\f1\b Developer Account
+\f0\b0 : To ship Apps you also need Developer Account.\
+
+\f1\b Certificates and Profiles: 
+\f0\b0 \
+
+\f1\b Certificate:
+\f0\b0  Certificate is identifying you and is a piece of paper that says, what we have published on App Store comes from us and we have signed on it. This certificate is dually signed first by you and later by Apple and then published on Appstore.\
+
+\f1\b Profiles:
+\f0\b0  Profile identify your apps\
+Development and Production Profiles based on some permissions and not some permissions.\
+You need to link both App shipped with Production profile must by Signed with Production certificate. \
+\
+App ID: Each app has a unique App identifier.\
+\
+\
+
+\f1\b\fs36 To Run App on Real Device - iOS
+\f0\b0\fs24 \
+\
+
+\f1\b To Release App on App Store\
+\
+
+\f2\b0\fs22 \cf2 \CocoaLigature0 1- Reveal iOS folder of Flutter project in finder and open Runner.xcworkspace in Xcode.\
+\
+2- Go to target > Signing & Capabilities \
+3- Turn off Automatically manage Signing.\
+
+\f1\b\fs24 \cf0 \CocoaLigature1 \
+Create Development & Distribution
+\f0\b0 \
+1- Delete Apple Certificates from Keychain and Developer Portal (But if you have active apps on Appstore, than deleting certificate will remove Apps from Appstore).\
+2- Delete all profiles from Developer Portal.\
+3- Create new Certificate on Developer Portal and select iOS App development option\
+4- For that go to MacBook and open Keychain and got to menu\
+5- KeyChain Access > Certificate Assistant > Request a Certificate from Certificate Authority\
+6- Put on Email Address, your Common Name, check Save to Disk option and save to computer.\
+7- Add that .certSignRequest to Certificate creating screen on Developer portal.\
+8- A certificate will be created, download this .cer file. You know it\'92s private key is present in keychain from previous step.\
+9- Open downloads folder and double click this .cer file. This will create a certificate and login in Keychains. \
+And will hook with private key.   
+\f1\b So this way you have created apple\'92s iOs App development certificate
+\f0\b0  
+\f1\b \
+
+\f0\b0 10- Same are the steps for Production Certificate, just change one step on Developer portal While creating certificate, select iOS Distribution(App Store and Ad Hoc).\
+\
+
+\f1\b Create an App ID\
+
+\f0\b0 1- Write Description: Like \'93MyNotes Flutter App\'94\
+2- Bundle ID: Write the reverse domain and add app name separated by dot at end.\
+3- Like: \'93se.pixolity.mynotes\'94\
+4- Continue and register.
+\f1\b \
+
+\f0\b0 \
+
+\f1\b Register UUID of iOS Device\
+
+\f0\b0 1- Register your device with Apple, So that Apple know that with which device you are going to Test your specific App.\
+\
+
+\f1\b Development Profile and Download\
+
+\f0\b0 \
+
+\f1\b Development
+\f0\b0 \
+1- Press Generate Profile button\
+2- Select App ID that you recently created.\
+3- As I talked earlier, your Profile is associated with Certificate. Select a iOS Development Certificate.\
+4- Select the devices on which you want your app should run on, registered with this profile. (These are actually the devices you registered during Register Device section).\
+5- Give a Provisioning Profile Name: eg MyNotes Dev\
+6- Click generate\
+7- Download\
+\
+
+\f1\b Production:
+\f0\b0 \
+1-Follow all steps same as Development Profile but one difference is Select Profile type as AppStore from Distribution Section.\
+2- Also Select Distribution certificate instead of Development Certificate.\
+\
+
+\f1\b Install Provisioning Profiles to Sign Applications on your Mac
+\f0\b0 \
+\
+1- Download both, they will have extension .mobileprovision\
+2- Next step is to install them to your macOS.\
+3- Go to this folder 
+\f2\fs22 \cf2 \CocoaLigature0 cd /Users/dev/Library/MobileDevice/Provisioning\\ Profiles\
+4- Delete all existing profiles\
+5- Paste both downloaded profiles\
+6- Add Provisioning Profile folder in favourite for quick access.\
+\
+\
+
+\f3\b Setup Profiles in Xcode Project\
+\
+
+\f2\b0 1- Reveal iOS folder of Flutter project in finder and open Runner.xcworkspace in Xcode.\
+\
+2- Go to target > Signing & Capabilities \
+3- Turn off Automatically manage Signing.\
+4- Select profiles for both development and Production.\
+5- To Add team in Xcode Open Build settings and search \'93development team\'94\
+6- Select required team for the project.\
+\
+
+\f3\b Run Project on Real Device\
+\
+
+\f2\b0 1- If you successfully run the project congratulation.\
+2- If you got error for any dependancy like, I got \'93Module cloud_Firestore not found\'94.\
+3- Go to Visual Studio Code Terminal and hit following command\
+\'93flutter clean ios\'94\
+4- Then hit this command \'93flutter pub get\'94\
+5- Goto iOS Folder like \'93cd ios\'94\
+6- Run \'93pod install\'94\
+7- If that gives error, you can use \'93pod install \'97repo-update\'94\
+8- If it comes compatible version issue with iOS version the open Podfile from cmd+p. And change the iOS Compatible version for dependencies.\
+\
+\
+\
+
+\f1\b\fs24 \cf0 \CocoaLigature1 To Run App on Android Device.\
+\
+To Connect Android Device With Flutter\
+\
+
+\f0\b0 1- Install ADB using this command from terminal \'93
+\f2\fs22 \cf2 \CocoaLigature0 brew install --cask android-platform-tools
+\f0\fs24 \cf0 \CocoaLigature1 \'94\
+2- Install Genymobile/scrcpy using command \'93brew install scrcpy\'94\
+3- Connect Android device with Mac.\
+4- Turn On USB Debugging on Android Device, Allow USB Debugging.\
+5- Select Android device and run without debugging\
+6- If you got an error regarding minSDKVersion change it to match Dependancy and android version.\
+7- Hard code minSDKVersion if it get not resolved in latest versions.\
+8- Hit this command \'93flutter clean android\'94\
+9- Then hit this command \'93flutter pub get\'94 to re-add dependencies.\
+\
+
+\f2\fs22 \cf2 \CocoaLigature0 \
+}
