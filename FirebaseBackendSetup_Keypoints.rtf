@@ -1,0 +1,115 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 HelveticaNeue;\f4\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;}
+{\colortbl;\red255\green255\blue255;\red178\green186\blue203;\red31\green33\blue47;\red0\green0\blue0;
+\red24\green26\blue30;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c74902\c78039\c83529;\cssrgb\c16078\c17647\c24314;\csgray\c0;
+\cssrgb\c12157\c13725\c15686;\cssrgb\c100000\c100000\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Command issue on terminal Flutter Fire CLI\
+\
+
+\f1\b FlutterFire
+\f0\b0 \
+It performs all custom work like plist file add in project and other Firebase project configuration.\
+\
+To install this go to FlutterFire Overview and see steps. You can install using CLI, using following command.\
+\
+Hit \'93
+\f2\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+dart pub global activate flutterfire_cli
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \'94\
+\
+Add it in your path if terminal says to add in path.\
+\
+Check Folder where it is installed by hitting \'93which flutterfire\'94.\
+\
+Add Path of FlutterFire bin permanently to your path.\
+ Open zshrc file by \'93open ~/.zshrc\'94\
+ Add Path like \'93
+\f2\fs22 \cf4 \CocoaLigature0 export PATH="$PATH":"$HOME/.pub-cache/bin\'94\'94\
+
+\f0\fs24 \cf0 \CocoaLigature1  Hit this command to reload your paths \'93source ~/.zshrc\'94\
+\
+
+\f1\b Firebase CLI\
+
+\f0\b0 A CLI help us to interact with Firebase right from our terminal.\
+\
+\
+
+\f1\b Install Firebase CLI\
+ 
+\f0\b0 Follow the installation instructions on this link \'93https://firebase.google.com/docs/cli#mac-linux-npm\'94\
+Add path of Firebase CLI to shell.\
+If you are using Shell .zshrc , it can be opened using this command \'93open ~/.zshrc\'94\
+Then write following Path in the file \'93export PATH="$PATH:$(npm prefix -g)/bin\'94\'94\
+Run source ~/.zshrc to reload paths.\
+Now check \'93firebase --version\'94 to check if it is installed, if installed it would return some version.\
+
+\f1\b \
+\
+\
+Firebase Login/Logout\
+
+\f0\b0 Go to Visual Studio Flutter Project in VS Code. \
+Open Terminal Window.\
+\
+Hit the command \'93firebase login\'94 and proceed on.\
+\
+\
+
+\f1\b Configure Firebase Project\
+
+\f0\b0 \
+1- This is done through Flutter Fire CLI command. \'93dart pub global activate flutterfire_cli\'94\
+2- \'93flutterfire configure\'94\
+3- Select Create new project.\
+4- Give ID, For Example: mynotes.  \'93This ID must be unique, for Uniqueness you can write name like \'93mynotes-flutter-project1234\'94\'94 etc..\
+5- Select platforms for which you want to create Flutter project.\
+6- If you got error while configuring Flutter Project for different platforms. First Check if all is well by running \'93flutter doctor\'94 if not first resolve that.\
+\
+7- There may be some workarounds, I tried below while configuring on my Mac, when I got some issues.\
+\
+\pard\pardeftab720\sa320\partightenfactor0
+
+\f3\fs28 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 I did following steps and it worked for me.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 Run flutter doctor, and resolved issues.\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 Installed rebnv\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 Installed Cocoapods (Learned from ChatGPT the steps to install Cocoapods through rebnv)\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 Installed xcodeproj\'a0
+\f4\fs23\fsmilli11900 sudo gem install xcodeproj
+\f3\fs28 \cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 Restart IDE\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 logout and login from firebase.\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 Deleted google-service.json under app android>app directory.\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 Lastly configure Firebase Project\'a0
+\f4\fs23\fsmilli11900 flutterfire configure
+\f3\fs28 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+\
+Finally if you are successful, you will get 
+\f1\b Firebase App Id 
+\f0\b0 and it will say Firebase configuration file lib/firebase_options.dart generated successfully with the following Firebase apps:\
+Confirm by searching those App IDs in your project if exists to verify.\
+Now Run Apps of iOS and Android Platforms.	\
+\
+\
+}
