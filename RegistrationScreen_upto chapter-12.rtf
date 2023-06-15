@@ -1,0 +1,149 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Italic;\f4\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red121\green213\blue255;\red20\green20\blue28;\red153\green160\blue204;
+\red142\green199\blue87;\red138\green99\blue207;\red25\green171\blue206;\red104\green141\blue245;\red172\green130\blue245;
+\red253\green139\blue82;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c53725\c86667\c100000;\cssrgb\c10196\c10588\c14902;\cssrgb\c66275\c69412\c83922;
+\cssrgb\c61961\c80784\c41569;\cssrgb\c61569\c48627\c84706;\cssrgb\c5098\c72549\c84314;\cssrgb\c47843\c63529\c96863;\cssrgb\c73333\c60392\c96863;
+\cssrgb\c100000\c61961\c39216;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1- Remove all comments from main.dart file.\
+\
+2- Remove MyApp whole class that is returning MaterialApp and cut the code inside return statement and Paste it inside main method\'92s runApp parentheses.\
+\
+3- Next remove MyHomePage State full widget extending class.\
+\
+4- Type STL; VS Code will give auto complete option to create Stateless Widget.\
+\
+5- Change it\'92s name and Change the name of calling and re-run code.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs36 \cf0 Scaffold:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 A screen where user interact with and all the content on screen is presented by Scaffold. You are given with top status bar and screen where you can put the different controls is basically a scaffold.\
+\
+Also make Scaffold non-constant.\
+\
+Constant initialiser: It is good to make Stateless Widget\'92s initialiser constant if their properties and child widgets are also declared with const. To avoid unnecessary rebuilding of the widgets.\
+\
+Commonly we not use const with Stateful Widgets because by nature they have mutable state that changes over time. We can use const with Stateful widgets if their Childs and properties are also declared with const.\
+\
+\
+We can wrap a widget into a parent widget Like When we need to centre align a TextButton, we can wrap it in Centre Widget.\
+Open window to auto wrap by pressing cmd + dot(.) .\
+Also you can remove a widget in same way with a quick utility provided.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Column
+\f0\b0 \
+For arranging things vertically, we use Column.\
+\
+ \
+
+\f1\b Pass Values in TextButton Widget\'92s onPressed param
+\f0\b0 \
+We need to send data to Firebase when user tap on Register Button. Using 
+\f1\b TextEditingController. 
+\f0\b0 We pass it into TextField and it keeps on writing its value in it.\
+This manages a state, which will require us to change our HomePage widget to Stateful Widget.\
+\
+Create two late type TextEditingController final variables and initialise them in initState() method and assign them to controller param of TextField() \
+\
+For which we will go again onto HomePage and press cmd + .  And select option of \'93\'94Convert to stateful widget.\
+\
+
+\f1\b dispose() 
+\f0\b0 Method used to clean up or release resources assigned to a Stateful Widget.\
+\
+To add Placeholder text or hintText in dart. You need to add another parameter to TextField and that is hintText.\
+\
+\
+
+\f1\b\fs36 Firebase Authentication & Create User:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 1- 
+\f2 \cf2 \cb3 \expnd0\expndtw0\kerning0
+import\cf4  \cf5 'package:firebase_auth/firebase_auth.dart'\cf2 ;\cf4 \cb1 \
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \
+2- On pressing TextButton you will grab those two TextEditingController values and use them to create user.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\i \cf6 \cb3 \expnd0\expndtw0\kerning0
+		  final
+\f2\i0 \cf4  email \cf2 =\cf4  _email\cf2 .\cf4 text\cf2 ;\cf4 \cb1 \
+\cb3             
+\f3\i \cf6 final
+\f2\i0 \cf4  password \cf2 =\cf4  _password\cf2 .\cf4 text\cf2 ;\cf4 \cb1 \
+\cb3             await \cf7 FirebaseAuth\cf2 .\cf4 instance\cf2 .\cf8 createUserWithEmailAndPassword\cf4 (\cb1 \
+\cb3               email\cf9 :\cf4  email\cf2 ,\cf4 \cb1 \
+\cb3                password\cf9 :\cf4  password\cb1 \
+\cb3                )\cf2 ;\cf4 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \
+\
+Also if we are looking for Secure password text field then there are few things we have to handle When going with cross-platform and that are the params we need to ass inside TextField.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf4 \cb3 \expnd0\expndtw0\kerning0
+obscureText\cf9 :\cf4  \cf10 true\cf2 ,\cf4 \cb1 \
+\cb3             enableSuggestions\cf9 :\cf4  \cf10 false\cf2 ,\cf4 \cb1 \
+\cb3             autocorrect\cf9 :\cf4  \cf10 false\cf4 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \
+Before using Registration of Firebase we need to use.\
+\
+\
+\
+Firebase.initializeApp() code should be at write place so that for any other type of utility we can refer to it.\
+To do this we need to do Widget Flutter binding. Do that in main before running main App.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf7 \cb3 \expnd0\expndtw0\kerning0
+WidgetsFlutterBinding\cf2 .\cf4 ensureInitialized\cf2 ;\cf4 \cb1 \
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf11 Future Builder:\
+\
+
+\f2\b0\fs24 This takes a future, performs it. Once it is succeeded or failed, it will give a callback and in that callback you can present your widgets.\
+\
+I have used it in the code and when Firebase initialisation get completes, then it will build UI.\
+\
+\
+\
+
+\f4\b\fs36 WidgetsFlutterBinding:\
+\
+
+\f2\b0\fs24 This is a class in flutter that used to lay down infrastructure of app. Basically we use it when We need to Bind our widget with something else. Like I have to bind with 
+\f4\b FutureBuilder
+\f2\b0  and on the response of future code I have to build the widgets to render on screen. So here it is useful. \
+\
+\
+
+\f4\b\fs36 Loading Screen While Waiting\
+\
+
+\f2\b0\fs24 We can use connection states to determine the state of a Future.\
+We can use AsyncSnapshot Type snapshot parameter coming in the builder, is state of object that is coming from future.\
+\
+Write a switch statement and check cases of snapshot.connectionState. When it is done return Column otherwise in default case return a Text saying Loading.\
+}
