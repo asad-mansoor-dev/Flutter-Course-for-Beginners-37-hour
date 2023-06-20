@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Italic;\f4\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red25\green171\blue206;
+\red121\green213\blue255;\red104\green141\blue245;\red153\green160\blue204;\red172\green130\blue245;\red138\green99\blue207;
+\red142\green199\blue87;\red253\green139\blue82;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c5098\c72549\c84314;
+\cssrgb\c53725\c86667\c100000;\cssrgb\c47843\c63529\c96863;\cssrgb\c66275\c69412\c83922;\cssrgb\c73333\c60392\c96863;\cssrgb\c61569\c48627\c84706;
+\cssrgb\c61961\c80784\c41569;\cssrgb\c100000\c61961\c39216;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Add Link between Login and Register.\
+\
+Add one more button below Login button in Login screen.\
+\
+
+\f1\b Anonymous Routes:\
+\
+
+\f0\b0 Anonymous routes are those which are decided dynamically on runtime that which screen to push in which case. While they don\'92t have specific name assigned to them to reuse them.
+\f1\b \
+
+\f0\b0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Navigator\strokec5 .\strokec6 of\strokec7 (context)\strokec5 .\strokec6 push\strokec7 (\
+                  \strokec4 MaterialPageRoute\strokec7 (\
+                    builder\strokec8 :\strokec7  (context) \strokec5 =>\strokec7  
+\f3\i \strokec9 const
+\f2\i0 \strokec7  \strokec4 VerifyEmailView\strokec7 ()\strokec5 ,\strokec7 \
+                  )\strokec5 ,\strokec7 \
+                )\strokec5 ;\
+Anonymous route is one about which flutter don\'92t have information.\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb1 \strokec7 \
+
+\f4\b \cf2 Named Route\
+\
+
+\f2\b0 Named routes are defined by name and they are fixed in flutter that they have to go from this screen to that screen.\
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 routes\cf8 \strokec8 :\cf7 \strokec7  \{\
+      \cf10 \strokec10 '/login/'\cf8 \strokec8 :\cf7 \strokec7  (context) \cf5 \strokec5 =>\cf7 \strokec7  
+\f3\i \cf9 \strokec9 const
+\f2\i0 \cf7 \strokec7  \cf4 \strokec4 LoginView\cf7 \strokec7 ()\cf5 \strokec5 ,\cf7 \strokec7 \
+      \cf10 \strokec10 '/register/'\cf8 \strokec8 :\cf7 \strokec7  (context) \cf5 \strokec5 =>\cf7 \strokec7  
+\f3\i \cf9 \strokec9 const
+\f2\i0 \cf7 \strokec7  \cf4 \strokec4 RegisterView\cf7 \strokec7 ()\
+    \}\cf5 \strokec5 ,\cf7 \cb1 \strokec7 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 You can declare them at start\
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 runApp\cf7 \strokec7 (\cf4 \strokec4 MaterialApp\cf7 \strokec7 (\
+    title\cf8 \strokec8 :\cf7 \strokec7  \cf10 \strokec10 'Flutter Demo'\cf5 \strokec5 ,\cf7 \strokec7 \
+    theme\cf8 \strokec8 :\cf7 \strokec7  \cf4 \strokec4 ThemeData\cf7 \strokec7 (\
+      colorScheme\cf8 \strokec8 :\cf7 \strokec7  \cf4 \strokec4 ColorScheme\cf5 \strokec5 .\cf6 \strokec6 fromSeed\cf7 \strokec7 (seedColor\cf8 \strokec8 :\cf7 \strokec7  \cf4 \strokec4 Colors\cf5 \strokec5 .\cf7 \strokec7 blue)\cf5 \strokec5 ,\cf7 \strokec7 \
+      useMaterial3\cf8 \strokec8 :\cf7 \strokec7  \cf11 \strokec11 true\cf5 \strokec5 ,\cf7 \strokec7 \
+    )\cf5 \strokec5 ,\cf7 \strokec7 \
+    home\cf8 \strokec8 :\cf7 \strokec7  
+\f3\i \cf9 \strokec9 const
+\f2\i0 \cf7 \strokec7  \cf4 \strokec4 HomePage\cf7 \strokec7 ()\cf5 \strokec5 ,\cf7 \strokec7 \
+    routes\cf8 \strokec8 :\cf7 \strokec7  \{\
+      \cf10 \strokec10 '/login/'\cf8 \strokec8 :\cf7 \strokec7  (context) \cf5 \strokec5 =>\cf7 \strokec7  
+\f3\i \cf9 \strokec9 const
+\f2\i0 \cf7 \strokec7  \cf4 \strokec4 LoginView\cf7 \strokec7 ()\cf5 \strokec5 ,\cf7 \strokec7 \
+      \cf10 \strokec10 '/register/'\cf8 \strokec8 :\cf7 \strokec7  (context) \cf5 \strokec5 =>\cf7 \strokec7  
+\f3\i \cf9 \strokec9 const
+\f2\i0 \cf7 \strokec7  \cf4 \strokec4 RegisterView\cf7 \strokec7 ()\
+    \}\cf5 \strokec5 ,\cf7 \strokec7 \
+  )\
+  )\cf5 \strokec5 ;\
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb1 \strokec7 \
+}
