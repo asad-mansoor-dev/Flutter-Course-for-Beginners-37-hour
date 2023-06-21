@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtool show log;
-
+import 'package:mynotes/Utilities/show_error_dialog.dart';
 import 'package:mynotes/constants/routes.dart';
 
 class RegisterView extends StatefulWidget {
@@ -30,9 +29,10 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold
-    (
-      appBar: AppBar(title: const Text('Register'),),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register'),
+      ),
       body: Column(
         children: [
           TextField(
@@ -58,31 +58,52 @@ class _RegisterViewState extends State<RegisterView> {
               final email = _email.text;
               final password = _password.text;
               try {
-                final userCredentials = await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                        email: email, password: password);
-                devtool.log(userCredentials.toString());
+                await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                final user = FirebaseAuth.instance.currentUser;
+                await user?.sendEmailVerification();
+                await Navigator.of(context).pushNamed(verifyEmailRoute);
               } on FirebaseAuthMultiFactorException catch (e) {
                 if (e.code == 'weak-password') {
-                  // You can add multiple handlings in this way.
-                  devtool.log('Weak Password');
+                  await showErrorDialogue(
+                    context,
+                    'Weak Password',
+                  );
                 } else if (e.code == 'email-already-in-use') {
-                  devtool.log('Email already in use');
+                  await showErrorDialogue(
+                    context,
+                    'Email already in use',
+                  );
+                } else if (e.code == 'invalid-email') {
+                  await showErrorDialogue(
+                    context,
+                    'This is an invalid email address',
+                  );
                 } else {
-                  devtool.log(
-                      'Firebase Authentication Error: $e snd type ${e.runtimeType}');
+                  await showErrorDialogue(
+                    context,
+                    'Error: ${e.code}',
+                  );
                 }
+              } catch (e) {
+                await showErrorDialogue(
+                  context,
+                  e.toString(),
+                );
               }
             },
             child: const Text('Register'),
           ),
           TextButton(
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                loginRoute,
-                 (route) => false,
-                 );
-            }, child: Text('Already registered ? Login here!'))
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  loginRoute,
+                  (route) => false,
+                );
+              },
+              child: const Text('Already registered ? Login here!'))
         ],
       ),
     );
