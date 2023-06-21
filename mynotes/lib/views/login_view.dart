@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtool show log;
-
 import 'package:mynotes/constants/routes.dart';
+import '../Utilities/show_error_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -59,20 +58,37 @@ class _LoginViewState extends State<LoginView> {
               final email = _email.text;
               final password = _password.text;
               try {
-                await FirebaseAuth.instance
-                    .signInWithEmailAndPassword(
-                        email: email, password: password);
+                await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: email, password: password);
                 Navigator.of(context).pushNamedAndRemoveUntil(
                   notesRoute,
                   (route) => false,
                 );
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
-                  devtool.log('User not found');
+                  await showErrorDialogue(
+                    context,
+                    'User not found',
+                  );
+                }
+
+                else if (e.code == 'wrong-password') {
+                  await showErrorDialogue(
+                    context,
+                    'Wrong credentials.'
+                    );
+                }
+                else {
+                  await showErrorDialogue(
+                    context,
+                    'Error: ${e.code}'
+                  );
                 }
               } catch (e) {
-                devtool.log(
-                    'Firebase Authentication Error: $e and Type of class is ${e.runtimeType}');
+                await showErrorDialogue(
+                    context,
+                    e.toString(),
+                  );
               }
             },
             child: const Text('Login'),
@@ -91,3 +107,4 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+
