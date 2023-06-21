@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as devtool show log;
+
+import 'package:mynotes/constants/routes.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -58,15 +61,15 @@ class _RegisterViewState extends State<RegisterView> {
                 final userCredentials = await FirebaseAuth.instance
                     .createUserWithEmailAndPassword(
                         email: email, password: password);
-                print(userCredentials);
+                devtool.log(userCredentials.toString());
               } on FirebaseAuthMultiFactorException catch (e) {
                 if (e.code == 'weak-password') {
                   // You can add multiple handlings in this way.
-                  print('Weak Password');
+                  devtool.log('Weak Password');
                 } else if (e.code == 'email-already-in-use') {
-                  print('Email already in use');
+                  devtool.log('Email already in use');
                 } else {
-                  print(
+                  devtool.log(
                       'Firebase Authentication Error: $e snd type ${e.runtimeType}');
                 }
               }
@@ -76,7 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                '/login/',
+                loginRoute,
                  (route) => false,
                  );
             }, child: Text('Already registered ? Login here!'))
