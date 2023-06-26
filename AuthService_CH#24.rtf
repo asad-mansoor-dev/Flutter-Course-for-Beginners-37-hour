@@ -29,19 +29,18 @@ For this we will creat factory constructor.\
 \pard\pardeftab720\partightenfactor0
 
 \f1\b0 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Use the\'a0
-\f2 \cf4 \strokec4 factory
-\f1 \cf2 \strokec2 \'a0keyword when implementing a constructor that doesn\'92t always create a new instance of its class. For example, a factory constructor might return an instance from a cache, or it might return an instance of a subtype.\
+Use the\'a0
+\f2 \cf4 factory
+\f1 \cf2 \'a0keyword when implementing a constructor that doesn\'92t always create a new instance of its class. For example, a factory constructor might return an instance from a cache, or it might return an instance of a subtype.\
 \
 \pard\pardeftab720\partightenfactor0
 
-\f3 \cf5 \cb6 \strokec5 factory\cf7 \strokec7  \cf8 \strokec8 AuthUser\cf9 \strokec9 .\cf10 \strokec10 fromFirebase\cf7 \strokec7 (\cf8 \strokec8 User\cf7 \strokec7  user) \cf9 \strokec9 =>\cf7 \strokec7  \cf8 \strokec8 AuthUser\cf7 \strokec7 (user\cf9 \strokec9 .\cf7 \strokec7 emailVerified)\cf9 \strokec9 ;\cf7 \cb1 \strokec7 \
+\f3 \cf5 \cb6 factory\cf7  \cf8 AuthUser\cf9 .\cf10 fromFirebase\cf7 (\cf8 User\cf7  user) \cf9 =>\cf7  \cf8 AuthUser\cf7 (user\cf9 .\cf7 emailVerified)\cf9 ;\cf7 \cb1 \
 \pard\pardeftab720\partightenfactor0
 \cf11 \
 Here \'93User user\'94 came from firebase from this import \
 \pard\pardeftab720\partightenfactor0
-\cf9 \cb6 \strokec9 import\cf7 \strokec7  \cf12 \cb6 \strokec12 'package:firebase_auth/firebase_auth.dart'\cf7 \cb6 \strokec7  \cf9 \strokec9 show\cf7 \strokec7  User\cf9 \strokec9 ;\cf7 \cb1 \strokec7 \
-\pard\pardeftab720\partightenfactor0
-\cf7 \
+\cf9 \cb6 import\cf7  \cf12 'package:firebase_auth/firebase_auth.dart'\cf7  \cf9 show\cf7  User\cf9 ;\cf7 \cb1 \
+\
 \
 }
