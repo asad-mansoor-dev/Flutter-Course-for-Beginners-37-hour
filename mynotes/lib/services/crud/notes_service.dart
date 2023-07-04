@@ -5,29 +5,31 @@ import 'package:sqflite/sqflite.dart'; //  sqflite (For storage of our data)
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' show join;
 
-
 class NotesService {
 // sqflite library
   Database? _db;
 
   List<DatabaseNote> _notes = [];
 
-  static final NotesService _shared = NotesService._sharedInstance();
-  NotesService._sharedInstance();
-  factory NotesService() => _shared;
+  late final StreamController<List<DatabaseNote>> _notesStreamController;
 
-  final _notesStreamController = 
-        StreamController<List<DatabaseNote>>.broadcast();
+  static final NotesService _shared = NotesService._sharedInstance();
+  NotesService._sharedInstance() {
+    _notesStreamController = StreamController<List<DatabaseNote>>.broadcast(
+      onListen: () {
+        _notesStreamController.sink.add(_notes);
+      },
+    );
+  }
+  factory NotesService() => _shared;
 
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
 
   Future<DatabaseUser> getOrCreateUser({required String email}) async {
     try {
-
-        final user = await getUser(email: email);
-        return user;
+      final user = await getUser(email: email);
+      return user;
     } on CouldNotFindUser {
-
       final createdUser = await createUser(email: email);
       return createdUser;
     } catch (e) {
@@ -37,7 +39,7 @@ class NotesService {
 
   Future<void> _cacheNotes() async {
     final allNotes = await getAllNotes();
-    _notes = allNotes.toList();
+    _notes = allNotes. toList();
     _notesStreamController.add(_notes);
   }
 
@@ -55,7 +57,7 @@ class NotesService {
       isSyncedWithCloudColumn: 0,
     });
 
-    if (updatesCount == 0 ) {
+    if (updatesCount == 0) {
       throw CouldNotUpdateNote();
     } else {
       final updatedNote = await getNote(id: note.id);
@@ -181,7 +183,7 @@ class NotesService {
       throw UserAlreadyExists();
     }
 
-    final userId = await db.insert(userIdColumn, {
+    final userId = await db.insert(userTable, {
       emailColumn: email.toLowerCase(),
     });
 
@@ -216,9 +218,7 @@ class NotesService {
   Future<void> _ensureDbIsOpen() async {
     try {
       await open();
-    } on DatabaseAlreadyOpenException {
-
-    }
+    } on DatabaseAlreadyOpenException {}
   }
 
   Future<void> open() async {

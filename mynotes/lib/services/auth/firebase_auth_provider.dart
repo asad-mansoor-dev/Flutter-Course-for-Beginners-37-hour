@@ -6,12 +6,14 @@ import 'package:mynotes/services/auth/auth_exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthProvider implements AuthProvider {
-
   @override
   Future<void> initialize() async {
-    await Firebase.initializeApp(
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        name: 'mynotes-firebase-project12321',
         options: DefaultFirebaseOptions.currentPlatform,
       );
+    }
   }
 
   @override
