@@ -181,7 +181,7 @@ class NotesService {
       throw UserAlreadyExists();
     }
 
-    final userId = await db.insert(userIdColumn, {
+    final userId = await db.insert(userTable, {
       emailColumn: email.toLowerCase(),
     });
 
