@@ -7,8 +7,16 @@ import 'package:mynotes/views/notes/notes_view.dart';
 import 'package:mynotes/views/register_view.dart';
 import 'package:mynotes/views/verify_email_view.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  //  if (Firebase.apps.isEmpty) {
+      // await Firebase.initializeApp(
+      //   name: 'mynotes-firebase-project12321',
+      //   options: DefaultFirebaseOptions.currentPlatform,
+      // );
+    // }
+  
   runApp(MaterialApp(
     title: 'Flutter Demo',
     theme: ThemeData(
