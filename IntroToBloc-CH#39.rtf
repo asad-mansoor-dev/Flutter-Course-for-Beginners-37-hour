@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 Helvetica-Oblique;
+\f3\fswiss\fcharset0 Helvetica-BoldOblique;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Bloc Library: flutter_bloc & bloc 
+\f1\b0 (Its package)
+\f0\b \
+\
+
+\f1\b0 It is a library to separate business logic from UI. It has two parts flutter_bloc (deals with UI) and bloc (deals with business logic).\
+\
+A container, we add events to it and every event added to it produces states. A class that begins with a state and it\'92s output is always a state. For Example; Logged-In, Logged-Out, Error Screen.\
+\
+For Example: You give input Login with this username and password, Register with this username and password. These are events we give to Bloc. Then it produces output states on those events.\
+\
+\
+
+\f0\b BlocProvider:
+\f1\b0 \
+We usually subclass our Bloc class using BlocProvider.\
+And this subclass act as a provider.\
+\
+
+\f0\b BlocListener:\
+
+\f1\b0 It listen to changes of state of a bloc. So you can perform some side effects. Like displaying error messages, new screens etc.\
+\
+
+\f0\b BlocBuilder:\
+
+\f1\b0 After listening the state changes to build something it is used. Like a FutureBuilder or StreamBuilder.\
+\
+
+\f0\b BlocConsumer:\
+
+\f1\b0 Combines BlocListener and BlocBuilder.\
+It Listens to changes that happen inside a Bloc, it will allow both side effect and Widget to display to the user based on those changes.\
+\
+\
+
+\f0\b Add Package dependencies \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2\i\b0 \cf0 \'93flutter pub add bloc
+\f3\b \'94\
+
+\f2\b0 \'93flutter pub add flutter_bloc \'93
+\f1\i0 \
+ \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Then Do 
+\f1\b0 \
+\'93
+\f2\i flutter clean\'94\
+
+\f1\i0 \
+
+\f0\b And Then
+\f1\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2\i \cf0 \'93flutter pub get\'94\
+\
+\
+Event goes into the bloc and state comes out of the bloc. 
+\f3\b We need Stateful widget for dealing with states. 
+\f2\b0 Here in our counter project state belongs to TextEditingController. 
+\f1\i0 Because it\'92s state changes when we write something and when we remove something etc.
+\f3\i\b \
+\
+
+\f2\b0 \
+\
+\
+}
